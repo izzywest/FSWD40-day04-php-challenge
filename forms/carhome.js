@@ -7,26 +7,48 @@ function showCars(){
  var carpopups=[];
  carData.pop();
  carData.map(function(x){var e=`<div class="col-sm-5 col-md-5 col-lg-5 car">
-                                    <a href="#popup${x.carId}">
- 	                            <img class="dummyimage" src="../pics/${x.img}" />
- 	                            <p>${x.carType}</p>
- 	                            <p>${x.power} kW</p>
- 	                            <p>${x.prodYear}</p>   
+                                    <a href="#popup${x.id}">
+ 	                            <!-- img class="dummyimage" src="../pics/${x.img}" / -->
+ 	                            <p>${x.car_manufacturer} ${x.car_model}</p>
+ 	                            <p>${x.car_class} kW</p>
+ 	                            <p>${x.car_regdate}</p>   
                                     </a>
                                     
                                     <div id="cancel${x.carId}"></div>
  	                            </div>
                                     
  	                           `;
-                             var popup=`<div id="popup${x.carId}" class="modalbox">
-                                         <form method="post">
-                                         <p>Card: <select><option>Visa</option>
-                                               <option>Master</option>
+                             var popup=`<div id="popup${x.id}" class="modalbox">
+                                         <form  action="booking.php" method="post" >
+                                         <p>Card: <select name="card"><option value="visa">Visa</option>
+                                               <option value="master">Master</option>
                                          </select>
                                          </p>  
-                                         <p>Card Number: <input type="number" /></p>
-                                         <p>Owner: John Doe</p><!-- has to be changed-->
-                                         <p><button type="submit">Book</button>&nbsp;<a href="#cancel${x.carId}">Cancel</a></p> 
+                                         <p>Card Number: <input name="cardNumber" type="number" /></p>
+                                         <p>Customer: ${userData.userName}</p><!-- has to be changed-->
+                                         <p>${x.car_manufacturer} ${x.car_model}
+                                            <input type="text" style="display:none;" name="carId" value="${x.id}"/>
+                                            <input type="text" style="display:none;" name="user" value="${userData.userName}"/> 
+                                         </p>
+                                         <p>Renting Date:
+                                             Month<select name="rentMonth"><option value="1">January</option>
+                                                    <option value="2">February</option>
+                                                    <option value="3">March</option>
+                                                    <option value="4">April</option>
+                                                    <option value="5">May</option>
+                                                    <option value="6">June</option>
+                                                    <option value="7">July</option>
+                                                    <option value="9">September</option> 
+                                                    <option value="10">October</option>
+                                                    <option value="11">November</option>
+                                                    <option value="8">August</option>
+                                                    <option value="12">December</option> 
+                                            </select> 
+                                            Day<input name="rentDay" type="number"/>
+                                            Year<input name="rentYear" type="number"/>  
+                                         </p>
+                                         <p><button type="submit">Book</button>&nbsp;
+                                                  <a href="#cancel${x.carId}">Cancel</a></p> 
                                          </form>
                                          </div>
                                        `; 
@@ -40,16 +62,15 @@ function showCars(){
 
 function parseCarData(){	
  var json=localStorage.getItem("carJson");
- var p=JSON.parse(json);
- //console.log(JSON.stringify(p));
- carData=p.cars;
- userData=p.user;
- //document.write(json);
- alert(userData.userName);
- //console.log(json); 
-//$('#loggedUser').text(userData.userName);
+ if(!json!==null)
+  {var p=JSON.parse(json);
+   carData=p.cars;
+   userData=p.user; 
+   $('#loggedUser').text(userData.userName);
+   $('#registerButton').text('');
+  }
 }
 
 setTimeout(parseCarData,1500);
-//setTimeout(showCars,1500);
+setTimeout(showCars,1600);
 
