@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2018 at 09:53 AM
+-- Generation Time: Jun 21, 2018 at 10:10 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -33,6 +33,18 @@ CREATE TABLE `car_rent` (
   `fk_userId` int(11) NOT NULL,
   `fk_carId` int(11) NOT NULL,
   `rent_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `price_list`
+--
+
+CREATE TABLE `price_list` (
+  `price_id` int(6) UNSIGNED NOT NULL,
+  `price_value` int(10) NOT NULL,
+  `fk_carId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -73,6 +85,18 @@ CREATE TABLE `vehicles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `vehicles`
+--
+
+INSERT INTO `vehicles` (`id`, `car_model`, `car_class`, `car_manufacturer`, `car_regdate`) VALUES
+(1, 'TLX', 'upper-range', 'Acura', '2018-09-12'),
+(2, 'CR-V', 'compact SUV', 'Honda', '2017-03-04'),
+(3, 'Ciaz', 'compact-car', 'Maruti Suzuki', '2015-05-06'),
+(4, 'F-Pace', 'SUV', 'Jaguar', '2017-06-12'),
+(5, 'Focus', 'compact-car', 'Ford', '2016-11-09'),
+(6, 'Alto 800', 'mini', 'Maruti-Suzuku', '2016-12-05');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -81,6 +105,12 @@ CREATE TABLE `vehicles` (
 --
 ALTER TABLE `car_rent`
   ADD PRIMARY KEY (`transactions`);
+
+--
+-- Indexes for table `price_list`
+--
+ALTER TABLE `price_list`
+  ADD PRIMARY KEY (`price_id`);
 
 --
 -- Indexes for table `users`
@@ -106,6 +136,12 @@ ALTER TABLE `car_rent`
   MODIFY `transactions` int(6) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `price_list`
+--
+ALTER TABLE `price_list`
+  MODIFY `price_id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -115,7 +151,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
