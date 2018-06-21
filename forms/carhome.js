@@ -1,6 +1,6 @@
 
 var carData;
-
+var userData;
 
 function showCars(){
  var cars=[];
@@ -39,12 +39,17 @@ function showCars(){
 }
 
 function parseCarData(){	
- var data=document.getElementById('dbData').textContent;
- var p=JSON.parse(data);
+ var json=localStorage.getItem("carJson");
+ var p=JSON.parse(json);
  //console.log(JSON.stringify(p));
- carData=p;
+ carData=p.cars;
+ userData=p.user;
+ //document.write(json);
+ alert(userData.userName);
+ //console.log(json); 
+//$('#loggedUser').text(userData.userName);
 }
 
 setTimeout(parseCarData,1500);
-setTimeout(showCars,1500);
+//setTimeout(showCars,1500);
 

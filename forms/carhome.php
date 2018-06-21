@@ -60,7 +60,7 @@ function connectDB()
 <body>
 
 <header><h1>Googoo Car Rental</h1> 
-<nav id="carNav"><form action="../php/home.php"><button>Login</button></form><form action="../php/register.php"><button >Register</button></form>
+<nav id="carNav"><form action="../php/home.php"><button><span id="loggedUser">Login</span></button></form><form action="../php/register.php"><button >Register</button></form>
 </nav>
 </header>
 
