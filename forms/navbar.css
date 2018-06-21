@@ -1,0 +1,21 @@
+#carNav{
+ background-color: lightgreen;
+ text-align: right;
+ margin: 0;
+ 
+}
+
+#carNav button{
+ border: none;
+ background-color: transparent;
+ font-weight: bold;
+ color: black;
+}
+
+header{
+ background-color: lightgreen;
+ text-align: center;
+ font-weight: bold;
+ margin: 0;
+ 
+}
