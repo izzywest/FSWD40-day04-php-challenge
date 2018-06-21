@@ -12,9 +12,7 @@ function showUsers($connect){
    	           {
                 $userName=$row['userName'];
                 echo " \"userName\": \"$userName\", \"userEmail\": $userEmail";
-      
-   }	
- 
+   }
  echo $user;
 }
 }

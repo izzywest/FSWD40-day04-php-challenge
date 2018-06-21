@@ -40,6 +40,18 @@ showUsers($conn);
     showCars($conn);
 ?>
 ]}
+
+
+<script>
+function jsontolocalstorage (){
+ var data = document.getElementById('db_data').textContent;  
+ localStorage.setItem("carJson", data);
+
+}
+setTimeout(jsontolocalstorage,2000);
+
+setTimeout(window.open("carhome.php"),2500);
+</script>
 </div>
 
 <!-- <div class="card" style="width: 70%;">

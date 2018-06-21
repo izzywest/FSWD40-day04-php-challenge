@@ -1,0 +1,14 @@
+var vehicle {
+        "$id": "$row['id']",
+        "$car_model": "$row['car_model']",
+        "$car_class": "$row['car_class']",
+        "$car_manufacturer": "$row['car_manufacturer']",
+        "$car_regdate": "$row['car_regdate']"
+    },
+
+    var users {
+        "$userId": "$row['userId']",
+        "$userName": "$row['userName']",
+        "$userEmail": "$row['userEmail']",
+        "$userPass": "$row['userPass']"
+    };
