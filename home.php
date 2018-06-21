@@ -27,7 +27,22 @@ $userRow=mysqli_fetch_array($res, MYSQLI_ASSOC);
            
     <!-- Content after login here -->
 
-<div class="card" style="width: 70%;">
+<div id="db_data">
+
+{"user": {<?php 
+include 'arrayUsers.php';
+showUsers($conn);
+?>},
+
+"cars":[
+<?php
+    include 'arrayVehicles.php';
+    showCars($conn);
+?>
+]}
+</div>
+
+<!-- <div class="card" style="width: 70%;">
 <div class="card-body">
 <h5 class="card-title">Book a car here</h5>
 <img class="card-img-top" src="car.png" style="width: 15%; padding-bottom: 20px;" alt="Card image cap">
@@ -35,25 +50,28 @@ $userRow=mysqli_fetch_array($res, MYSQLI_ASSOC);
 <form action="home.php" method="GET">Database: <input class="form-control" style="width: 100%; "type="text" name="database1" />
 Table: <input class="form-control" style="width: 100%; type="text" name="table1" /><br><br>
 <input class="btn btn-primary"  type="submit" name="submit" /></form>  </div>
-</div>
+</div> -->
 
 <?php
-$dbname = mysqli_real_escape_string($conn, $_GET['database1']);
-$table1 = mysqli_real_escape_string($conn, $_GET['table1']);
+// $dbname = mysqli_real_escape_string($conn, $_GET['database1']);
+// $table1 = mysqli_real_escape_string($conn, $_GET['table1']);
 
-if(isset($_GET["submit"])) {
+// if(isset($_GET["submit"])) {
 
-$sql = "SELECT userId, userName, userEmail, userPass FROM `$table1`";
-$result = mysqli_query($conn, $sql);
-// fetch a next row (as long as there are some) into $row
-while($row = mysqli_fetch_assoc($result)) {
-       printf("ID=%s Last Name: %s // First Name: %s<br>",
-                     $row["userId"], $row["userName"],$row["userEmail"]);
-}
-echo "<br>";
-}
+// $sql = "SELECT userId, userName, userEmail, userPass FROM `$table1`";
+// $result = mysqli_query($conn, $sql);
+// // fetch a next row (as long as there are some) into $row
+// while($row = mysqli_fetch_assoc($result)) {
+//        printf("ID=%s Last Name: %s // First Name: %s<br>",
+//                      $row["userId"], $row["userName"],$row["userEmail"]);
+// }
+// echo "<br>";
+// }
 
 ?>
+
+
+
 </div>
 </body>
 </html>

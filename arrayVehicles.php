@@ -13,7 +13,7 @@ function showCars($connect){
                 $car_class=$row['car_class'];
                 $car_manufacturer=$row['car_manufacturer'];
                 $car_regdate=$row['car_regdate'];
-                echo "{ \"id\": $id, \"car_model\": \"$car_model\", \"car_class\": $car_class, \"car_manufacturer\": $car_manufacturer, \"car_regdate\": $car_regdate";
+                echo "{ \"id\": $id, \"car_model\": \"$car_model\", \"car_class\": $car_class, \"car_manufacturer\": $car_manufacturer, \"car_regdate\": $car_regdate},";
                }
     echo "{\"nothing\": 0}";          
    }	
