@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2018 at 09:23 AM
+-- Generation Time: Jun 21, 2018 at 09:53 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -25,6 +25,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `car_rent`
+--
+
+CREATE TABLE `car_rent` (
+  `transactions` int(6) UNSIGNED NOT NULL,
+  `fk_userId` int(11) NOT NULL,
+  `fk_carId` int(11) NOT NULL,
+  `rent_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -42,11 +55,32 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`userId`, `userName`, `userEmail`, `userPass`) VALUES
 (3, 'user one', 'user1@mail.com', '1e9d59ad9be1cb302e155d55b61c95b3b3db897da2ed9643b15f8802039ffc8c'),
 (4, 'user two', 'user2@mail.com', 'f64c95e5e1f4537428da7ba9fd1ee87bd263091c38c52d52cefb8e2b408983e8'),
-(5, 'user three', 'user3@mail.com', '3f296cc62af0268616473fb36fe5acbbeacec67525d457043161fdbd39f20d15');
+(5, 'user three', 'user3@mail.com', '3f296cc62af0268616473fb36fe5acbbeacec67525d457043161fdbd39f20d15'),
+(6, 'test vier', 'test4@mail.com', '14315c45b6b88c54ff35fe69cbeb250e41f263d4a1dc9b8cec8b2d45f6ac288e');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicles`
+--
+
+CREATE TABLE `vehicles` (
+  `id` int(6) UNSIGNED NOT NULL,
+  `car_model` varchar(30) NOT NULL,
+  `car_class` varchar(30) NOT NULL,
+  `car_manufacturer` varchar(30) NOT NULL,
+  `car_regdate` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `car_rent`
+--
+ALTER TABLE `car_rent`
+  ADD PRIMARY KEY (`transactions`);
 
 --
 -- Indexes for table `users`
@@ -56,14 +90,32 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `userEmail` (`userEmail`);
 
 --
+-- Indexes for table `vehicles`
+--
+ALTER TABLE `vehicles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `car_rent`
+--
+ALTER TABLE `car_rent`
+  MODIFY `transactions` int(6) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `vehicles`
+--
+ALTER TABLE `vehicles`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
