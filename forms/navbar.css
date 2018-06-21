@@ -2,7 +2,7 @@
  background-color: lightgreen;
  text-align: right;
  margin: 0;
- 
+ display: inline;
 }
 
 #carNav button{
@@ -12,10 +12,18 @@
  color: black;
 }
 
+#carNav form{
+ display: inline;
+}
+
 header{
  background-color: lightgreen;
- text-align: center;
+ 
  font-weight: bold;
  margin: 0;
  
+}
+
+header h1{
+ text-align: center;
 }
